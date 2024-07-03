@@ -9,6 +9,8 @@ print("--------------------------------------------------")
 print("       WELCOME TO THE GLOBAL DEFENCE NETWORK      ")
 print("--------------------------------------------------")
 print()
+print("Hint: The password is one word")
+print()
 guess = input ("Please enter the password: ").upper()
 while guess != password:
     print()
@@ -19,11 +21,32 @@ while guess != password:
     if aliens > 7400000000:
         break
     print()
-    print("Password hint: the things that are attacking us.")
+    print(" Hint: the things that are attacking us.")
     print()
     guess = input("Quick! Please enter the password: ").upper()
 if aliens > 7400000000:
     print("Noooooo! The aliens have outnumbered us. All is lost.")
 else:
     print("Hooray! We won the fight and the world is saved!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
