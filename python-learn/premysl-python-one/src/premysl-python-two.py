@@ -8,8 +8,8 @@ if playerChoice =="1":
 elif playerChoice == "2":
     print("The door opens and an angry ogre hits you with his club")
     print("GAME OVER. YOU LOSE")
-
-
+elif playerChoice == "1,2,3,4,5,6,7,8,9,10":
+    print("Whoopsies, you died")
 
 
 

@@ -4,7 +4,7 @@ import sys
 import turtle
 from turtle import *
 shape("turtle")
-speed(10)
+speed(255)
 pencolor("white")
 pensize(6)
 Screen().bgcolor("turquoise")
