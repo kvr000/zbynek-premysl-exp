@@ -1,92 +1,39 @@
-import tkinter
+import colorsys
+from turtle import *
 import random
 
-gameOver = False
-score = 0
-squaresToClear = 0
+def vshape():
+    right(25)
+    forward(50)
+    backward(50)
+    left(50)
+    forward(50)
+    backward(50)
+    right(25)
+
+def snowflakeArm():
+    for x in range(0,4):
+        forward(30)
+        vshape()
+    backward(120)
+
+def snowflake():
+    for x in range(0, 18):
+        snowflakeArm()
+        right(20)
+
+print("Do you like shapes ?")
+print("choose 1, 2, 3, 4, 5,or 6")
+print("1 is a snowflake")
+print("hello")
+shape("circle")
+color ("dark orchid")
+speed(90)
+pensize(1)
+playerChoice = input()
+if playerChoice == "1":
+    snowflake()
+    hideturtle()
 
 
-def play_bombdodger():
-    create_bombfield(bombfield)
-    window = tkinter.Tk()
-    layout_window(window)
-    window.mainloop()
-
-bombfield = []
-def create_bombfield(bombfield):
-    global squaresToClear
-    for row in range(0,50):
-        rowList = []
-        for column in range(0,50):
-            if random.randint(1,100) < 20:
-                rowList.append(1)
-            else:
-                rowList.append(0)
-                squaresToClear = squaresToClear + 1
-        bombfield.append(rowList)
-
-def printfield(bombfield):
-    for rowList in bombfield:
-        print(rowList)
-def on_click(event):
-    global score
-    global gameOver
-    global squaresToClear
-    square = event.widget
-    row = int (square.grid_info()["row"])
-    column = int(square.grid_info()["column"])
-    currentText = square.cget("text")
-    if gameOver == False:
-        if bombfield[row][column] == 1:
-            gameOver = True
-            square.config(bg = "red")
-            print("Game Over! You hit a bomb")
-            print("Your score was: ",score)
-        elif currentText == "    ":
-            square.config(bg = "brown")
-            totalBombs = 0
-            if row < 9:
-                if bombfield[row+1][column] == 1:
-                    totalBombs = totalBombs + 1
-            if row > 0:
-                if bombfield[row-1][column] == 1:
-                    totalBombs = totalBombs + 1
-            if column > 0:
-                if bombfield[row][column-1] == 1:
-                    totalBombs = totalBombs + 1
-            if column < 9 :
-                if bombfield[row][column+1] == 1:
-                    totalBombs = totalBombs + 1
-            if row > 0 and column > 0:
-                if bombfield[row-1][column-1] == 1:
-                    totalBombs = totalBombs + 1
-            if row < 9 and column > 0:
-                if bombfield[row+1][column-1] == 1:
-                    totalBombs = totalBombs + 1
-            if row > 0 and column < 9:
-                if bombfield[row-1][column+1] == 1:
-                    totalBombs = totalBombs + 1
-            if row < 9  and column < 9:
-                if bombfield[row+1][column+1] == 1:
-                    totalBombs = totalBombs + 1
-            square.config(text =" " + str(totalBombs) + " ")
-            squaresToClear = squaresToClear - 1
-            score = score +1
-            if squaresToClear == 0:
-                gameOver = True
-                print("Well done! You found all the safe squares!")
-                print("Your score was:", score)
-
-def layout_window(window):
-    for rowNumber, rowList in enumerate(bombfield):
-        for columnNumber, columnEntry in enumerate(rowList):
-            if random.randint(1,100) < 25:
-                square = tkinter.Label(window, text = "    ", bg = "darkgreen")
-            elif random.randint(1,100) > 75:
-                square = tkinter.Label(window, text = "    ", bg = "seagreen")
-            else:
-                square = tkinter.Label(window, text = "    ", bg = "green")
-            square.grid(row = rowNumber, column = columnNumber)
-            square.bind("<Button-1>", on_click)
-
-play_bombdodger()
+mainloop()
