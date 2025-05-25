@@ -15,7 +15,7 @@ CELL_WIDTH = 10
 CELL_HEIGHT = 10
 COLS = WIDTH // CELL_WIDTH
 ROWS = HEIGHT // CELL_HEIGHT
-TRACK_WIDTH = 20
+TRACK_WIDTH = 32
 
 class RacingGame:
     state: int # -1 crashed, 0 pause, 1 running
@@ -91,7 +91,7 @@ class RacingGame:
 
                 self.distance += 1
 
-                self.speed = min(84.0, self.speed + 0.02)
+                self.speed = min(84.0, self.speed + 50)
 
                 self.next_update_time = self.next_update_time + 1 / self.speed
 
@@ -133,7 +133,7 @@ class RacingGame:
         if self.state < 0:
             screen.draw.text("You crashed!", center=(WIDTH // 2, HEIGHT // 2), fontsize=CELL_HEIGHT * 10, color="black")
 
-    def draw_car(self, surface: pygame.Surface, cell_rect: pygame.Rect, color="orange") -> None:
+    def draw_car(self, surface: pygame.Surface, cell_rect: pygame.Rect, color="DarkKhaki") -> None:
         car_surface = pygame.Surface((CELL_WIDTH * 3, CELL_HEIGHT * 3), pygame.SRCALPHA)
 
         x, y, w, h = CELL_WIDTH, CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT
@@ -166,7 +166,7 @@ class RacingGame:
             (w * 0.5, h * 0.4),
         ]
         for dx, dy in tire_offsets:
-            pygame.draw.circle(car_surface, ("black"), (int(cx + dx), int(cy + dy)), tire_radius)
+            pygame.draw.circle(car_surface, ("DarkOrange"), (int(cx + dx), int(cy + dy)), tire_radius)
 
         rotated = pygame.transform.rotozoom(car_surface, (45, 0, -45)[self.player_dir + 1], 1)
         target_rect = rotated.get_rect(center=cell_rect.center)
