@@ -1,0 +1,3 @@
+result = 1.2 - 1.0
+rounded_result = round(result, 2)
+print(f"Original Result: {result}\nRounded Result: {rounded_result}")
