@@ -1,0 +1,2 @@
+is_Delhi_Capital_of_india = True
+print(is_Delhi_Capital_of_india)
