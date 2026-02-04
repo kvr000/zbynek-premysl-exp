@@ -1,0 +1,8 @@
+import math
+
+n = 5.6
+f = math.floor(n)
+c = math.ceil(n)
+
+print("Using floor():", f, ', Type:', type(f).__name__)
+print("Using ceil() :", f, ', Type:', type(c).__name__)
