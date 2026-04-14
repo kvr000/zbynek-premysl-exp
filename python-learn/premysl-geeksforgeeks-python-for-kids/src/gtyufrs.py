@@ -1,12 +1,19 @@
-import math
+import turtle
+from itertools import cycle
 
-n1 = 5.6
-n2 = -2.6
+colors = cycle (["red", "orange", "yellow", "green", "blue", "purple"])
 
-# Positive number
-data = math.trunc(n1)
-print("Truncated (positive):", data, ', Type:', type(data).__name__)
+def draw_circle(size, angle, shift) :
+    turtle.pencolor(next(colors))
+    turtle.circle(size)
+    turtle.right(angle)
+    turtle.forward(shift)
+    draw_circle(size + 20, angle + 178, shift + 1)
 
-# Negative number
-val = math.trunc(n2)
-print("Truncated (negative):", val, ', Type:', type(val).__name__)
+turtle.bgcolor("black")
+turtle.speed("fast")
+turtle.pensize(40)
+draw_circle(30, 178, 1)
+
+turtle.pencolor("red")
+turtle.circle(30)
